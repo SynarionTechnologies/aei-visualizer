@@ -6,7 +6,7 @@ const LayerInfo = ({ layers, selectedNeuron, onNeuronSelect }) => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-white mb-4">Network Layers</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">Couches du Réseau</h3>
       
       {layers?.map((layer) => (
         <div key={layer.id} className="bg-dark-100 rounded-lg p-4">
@@ -17,7 +17,7 @@ const LayerInfo = ({ layers, selectedNeuron, onNeuronSelect }) => {
             />
             <h4 className="font-medium text-white">{layer.name}</h4>
             <span className="text-sm text-gray-400">
-              ({layer.neurons.length} neurons)
+              ({layer.neurons.length} neurones)
             </span>
           </div>
           
@@ -59,13 +59,13 @@ const LayerInfo = ({ layers, selectedNeuron, onNeuronSelect }) => {
           <div className="mt-3 pt-3 border-t border-dark-300">
             <div className="grid grid-cols-2 gap-4 text-xs text-gray-400">
               <div>
-                <span>Avg Activation:</span>
+                <span>Activation moy.:</span>
                 <span className="ml-2 text-white">
                   {(layer.neurons.reduce((sum, n) => sum + n.activation, 0) / layer.neurons.length).toFixed(3)}
                 </span>
               </div>
               <div>
-                <span>Max Activation:</span>
+                <span>Activation max:</span>
                 <span className="ml-2 text-white">
                   {Math.max(...layer.neurons.map(n => n.activation)).toFixed(3)}
                 </span>
