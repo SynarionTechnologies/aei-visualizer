@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import NeuralNetworkScene from './components/3d/NeuralNetworkScene';
-import Sidebar from './components/ui/Sidebar';
-import Header from './components/ui/Header';
-import Loading from './components/ui/Loading';
+import TestLucide from './TestLucide';
+// import NeuralNetworkScene from './components/3d/NeuralNetworkScene';
+// import Sidebar from './components/ui/Sidebar';
+// import Header from './components/ui/Header';
+// import Loading from './components/ui/Loading';
 import { mockApi } from './data/mockApi';
 import './App.css';
 
