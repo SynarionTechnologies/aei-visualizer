@@ -117,68 +117,9 @@ function App() {
   }
 
   return (
-    <div className="app h-screen bg-dark-50 text-white overflow-hidden">
-      {/* Header */}
-      <Header 
-        networkData={networkData}
-        isConnected={isConnected}
-        lastUpdated={networkData?.metadata?.lastUpdated}
-      />
-      
-      {/* Main Content */}
-      <div className="flex h-[calc(100vh-4rem)]">
-        {/* Sidebar */}
-        <Sidebar
-          networkData={networkData}
-          selectedNeuron={selectedNeuron}
-          selectedConnection={selectedConnection}
-          onNeuronSelect={handleNeuronClick}
-          onStepNetwork={handleStepNetwork}
-          onRefreshNetwork={handleRefreshNetwork}
-          isPlaying={isPlaying}
-          onTogglePlay={handleTogglePlay}
-          showLabels={showLabels}
-          onToggleLabels={handleToggleLabels}
-          showWeights={showWeights}
-          onToggleWeights={handleToggleWeights}
-          isLoading={isLoading}
-        />
-
-        {/* 3D Visualization */}
-        <div className="flex-1 relative">
-          {networkData ? (
-            <NeuralNetworkScene
-              networkData={networkData}
-              onNeuronClick={handleNeuronClick}
-              onConnectionClick={handleConnectionClick}
-              selectedNeuron={selectedNeuron}
-              selectedConnection={selectedConnection}
-              showLabels={showLabels}
-              showWeights={showWeights}
-            />
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center">
-                <div className="text-red-400 mb-2">Failed to load network</div>
-                <button 
-                  onClick={handleRefreshNetwork}
-                  className="bg-neural-600 hover:bg-neural-500 text-white px-4 py-2 rounded transition-colors"
-                >
-                  Retry
-                </button>
-              </div>
-            </div>
-          )}
-          
-          {/* Loading overlay */}
-          {isLoading && networkData && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="bg-dark-100 rounded-lg p-6">
-                <Loading message="Updating network..." />
-              </div>
-            </div>
-          )}
-        </div>
+    <div className="app h-screen bg-gray-900 text-white overflow-hidden">
+      <div className="flex items-center justify-center h-full">
+        <TestLucide />
       </div>
     </div>
   );
