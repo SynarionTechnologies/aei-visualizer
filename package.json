@@ -1,0 +1,44 @@
+{
+  "name": "aeif-visualizer",
+  "version": "1.0.0",
+  "description": "AEIF Visualizer is an interactive 3D web dashboard designed to visualize, explore, and test neural networks built with the Autonomous and Evolutive Intelligence Framework (AEIF).",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start"
+  },
+  "keywords": [
+    "neural-networks",
+    "3d-visualization",
+    "ai",
+    "dashboard",
+    "react",
+    "three.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "three": "^0.158.0",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.92.7",
+    "web-vitals": "^3.5.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
