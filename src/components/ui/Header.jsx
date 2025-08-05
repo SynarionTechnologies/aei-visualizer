@@ -14,10 +14,10 @@ const Header = ({
             <Brain className="w-6 h-6 text-neural-500" />
             <div>
               <h1 className="text-lg font-semibold text-white">
-                {networkData?.name || 'AEIF Neural Network'}
+                {networkData?.name || 'Réseau de Neurones AEIF'}
               </h1>
               <p className="text-sm text-gray-400">
-                Interactive 3D Visualization Dashboard
+                Tableau de Bord de Visualisation 3D Interactif
               </p>
             </div>
           </div>
@@ -32,14 +32,14 @@ const Header = ({
               <WifiOff className="w-4 h-4 text-red-400" />
             )}
             <span className={`text-sm ${isConnected ? 'text-green-400' : 'text-red-400'}`}>
-              {isConnected ? 'Connected' : 'Disconnected'}
+              {isConnected ? 'Connecté' : 'Déconnecté'}
             </span>
           </div>
 
           {/* Last Updated */}
           {lastUpdated && (
             <div className="text-sm text-gray-400">
-              Last updated: {new Date(lastUpdated).toLocaleTimeString()}
+              Dernière mise à jour: {new Date(lastUpdated).toLocaleTimeString('fr-FR')}
             </div>
           )}
 
