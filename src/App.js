@@ -3,6 +3,8 @@ import NeuralNetworkScene from './components/3d/NeuralNetworkScene';
 import Sidebar from './components/ui/Sidebar';
 import Header from './components/ui/Header';
 import Loading from './components/ui/Loading';
+import FloatingInfo from './components/ui/FloatingInfo';
+import NavigationHelp from './components/ui/NavigationHelp';
 import { mockApi } from './data/mockApi';
 import './App.css';
 
@@ -15,6 +17,8 @@ function App() {
   const [showLabels, setShowLabels] = useState(true);
   const [showWeights, setShowWeights] = useState(false);
   const [isConnected, setIsConnected] = useState(true);
+  const [hoveredElement, setHoveredElement] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Load initial network data
   useEffect(() => {
@@ -116,6 +120,16 @@ function App() {
     setNetworkData(updatedNetwork);
   }, []);
 
+  // Track mouse position for floating info
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   if (isLoading && !networkData) {
     return <Loading />;
   }
@@ -185,6 +199,17 @@ function App() {
           )}
         </div>
       </div>
+
+      {/* Floating Info for hovered elements */}
+      <FloatingInfo
+        neuron={hoveredElement?.type === 'neuron' ? hoveredElement.data : null}
+        connection={hoveredElement?.type === 'connection' ? hoveredElement.data : null}
+        position={mousePosition}
+        networkData={networkData}
+      />
+
+      {/* Navigation Help */}
+      <NavigationHelp />
     </div>
   );
 }
