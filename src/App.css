@@ -1,0 +1,115 @@
+/* Dashboard specific styles */
+.app {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Neuron pulse animation */
+@keyframes neuron-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.neuron-pulse {
+  animation: neuron-pulse 2s ease-in-out infinite;
+}
+
+/* Connection flow animation */
+@keyframes connection-flow {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.connection-flow {
+  stroke-dasharray: 5, 5;
+  animation: connection-flow 1s linear infinite;
+}
+
+/* Glow effects */
+.glow-effect {
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+
+.glow-effect:hover {
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+}
+
+/* Professional dashboard gradients */
+.dashboard-gradient {
+  background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.neural-gradient {
+  background: linear-gradient(145deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+}
+
+/* Loading animations */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-neural-600 hover:bg-neural-500 text-white font-medium py-2 px-4 rounded transition-all duration-200;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+  @apply bg-dark-200 hover:bg-dark-300 text-white font-medium py-2 px-4 rounded transition-all duration-200;
+}
+
+/* Sidebar animations */
+.sidebar-enter {
+  transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Canvas container */
+.canvas-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-container canvas {
+  display: block;
+  outline: none;
+}
+
+/* Selection highlights */
+.selected-item {
+  box-shadow: 0 0 0 2px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+  }
+}
