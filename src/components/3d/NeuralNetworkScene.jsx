@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, Grid, Text } from '@react-three/drei';
+import { OrbitControls, Environment, Grid, Text, KeyboardControls } from '@react-three/drei';
 import Neuron from './Neuron';
 import Connection from './Connection';
 import { getNeuronById } from '../../data/mockApi';
@@ -15,6 +15,17 @@ const NeuralNetworkScene = ({
   showWeights = false 
 }) => {
   const [hoveredNeuron, setHoveredNeuron] = useState(null);
+  const controlsRef = useRef();
+
+  // Keyboard controls mapping
+  const keyboardMap = [
+    { name: 'forward', keys: ['ArrowUp', 'KeyW'] },
+    { name: 'backward', keys: ['ArrowDown', 'KeyS'] },
+    { name: 'leftward', keys: ['ArrowLeft', 'KeyA'] },
+    { name: 'rightward', keys: ['ArrowRight', 'KeyD'] },
+    { name: 'jump', keys: ['Space'] },
+    { name: 'run', keys: ['Shift'] },
+  ];
 
   // Create lookup map for neurons
   const neuronMap = useMemo(() => {
@@ -46,15 +57,16 @@ const NeuralNetworkScene = ({
   }
 
   return (
-    <Canvas
-      camera={{ 
-        position: [8, 5, 8], 
-        fov: 50,
-        near: 0.1,
-        far: 1000 
-      }}
-      style={{ background: 'linear-gradient(to bottom, #0f172a, #1e293b)' }}
-    >
+    <KeyboardControls map={keyboardMap}>
+      <Canvas
+        camera={{
+          position: [8, 5, 8],
+          fov: 60,
+          near: 0.1,
+          far: 1000
+        }}
+        style={{ background: 'linear-gradient(to bottom, #0f172a, #1e293b)' }}
+      >
       {/* Lighting */}
       <ambientLight intensity={0.4} />
       <pointLight position={[10, 10, 10]} intensity={0.8} />
@@ -124,14 +136,24 @@ const NeuralNetworkScene = ({
 
       {/* Controls */}
       <OrbitControls
+        ref={controlsRef}
         enablePan={true}
         enableZoom={true}
         enableRotate={true}
-        minDistance={3}
-        maxDistance={50}
+        minDistance={2}
+        maxDistance={100}
         maxPolarAngle={Math.PI}
+        minPolarAngle={0}
+        enableDamping={true}
+        dampingFactor={0.05}
+        rotateSpeed={0.5}
+        zoomSpeed={0.8}
+        panSpeed={0.8}
+        autoRotate={false}
+        autoRotateSpeed={0.5}
       />
-    </Canvas>
+      </Canvas>
+    </KeyboardControls>
   );
 };
 
