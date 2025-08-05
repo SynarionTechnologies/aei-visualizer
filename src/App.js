@@ -111,6 +111,11 @@ function App() {
     setShowWeights(prev => !prev);
   }, []);
 
+  // Handle network updates from editing
+  const handleNetworkUpdate = useCallback((updatedNetwork) => {
+    setNetworkData(updatedNetwork);
+  }, []);
+
   if (isLoading && !networkData) {
     return <Loading />;
   }
@@ -141,6 +146,7 @@ function App() {
           showWeights={showWeights}
           onToggleWeights={handleToggleWeights}
           isLoading={isLoading}
+          onNetworkUpdate={handleNetworkUpdate}
         />
 
         {/* 3D Visualization */}
